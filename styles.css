@@ -5,6 +5,45 @@
   --dark-background: #777777;
 }
 
+/* Animations */
+.fade-right {
+  opacity: 0;
+  transform: translate(-64px, 0);
+  transition: opacity 750ms ease-out var(--fade-delay, 0ms),
+    transform 750ms ease-out var(--fade-delay, 0ms);
+}
+
+.fade-left {
+  opacity: 0;
+  transform: translate(64px, 0);
+  transition: opacity 750ms ease-out var(--fade-delay, 0ms),
+    transform 750ms ease-out var(--fade-delay, 0ms);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translate(0, 64px);
+  transition: opacity 750ms ease-out var(--fade-delay, 0ms),
+    transform 750ms ease-out var(--fade-delay, 0ms), box-shadow 500ms;
+}
+
+.delay-100 {
+  --fade-delay: 100ms;
+}
+
+.delay-200 {
+  --fade-delay: 200ms;
+}
+
+.delay-300 {
+  --fade-delay: 300ms;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
 html,
 body {
   font-family: var(--main-font);
@@ -114,6 +153,7 @@ body {
       height: 500px;
       border-radius: 32px;
       object-fit: cover;
+      box-shadow: var(--box-shadow);
     }
     img:nth-of-type(2) {
       margin-left: -64px;
@@ -157,7 +197,7 @@ body {
   gap: 64px;
   .modern-form {
     background: #fff;
-    padding: 32px 40px;
+    padding: 32px;
     border-radius: 24px;
     box-shadow: var(--box-shadow);
     max-width: 480px;
@@ -208,10 +248,6 @@ body {
       }
     }
   }
-  img {
-    width: 500px;
-    object-fit: cover;
-  }
 }
 
 .banner--bottom {
@@ -246,7 +282,9 @@ body {
       .card {
         min-width: 0;
         width: 100%;
-
+        img {
+          height: 250px;
+        }
         p {
           font-size: 16px;
         }
@@ -256,7 +294,7 @@ body {
 
   .banner {
     background-size: 500%;
-    background-position: center 30%;
+    background-position: 60% 5%;
     height: 500px;
     justify-content: start;
 
@@ -272,10 +310,17 @@ body {
     flex-direction: column;
     gap: 0;
 
-    img {
+    .img-container {
       width: 100%;
-      height: 250px;
-      border-radius: 0;
+      img {
+        width: 100%;
+        height: 250px;
+        border-radius: 0;
+      }
+      img:nth-of-type(2) {
+        margin-left: 0;
+        margin-top: 0;
+      }
     }
   }
 
@@ -291,14 +336,16 @@ body {
       box-shadow: none;
       img {
         width: 100%;
-        height: 350px;
-        object-position: center 30%;
+        height: 300px;
+        object-position: center center;
       }
     }
   }
 
   .form-section {
-    padding: 0;
+    padding: 0 0 5% 0;
+    flex-direction: column;
+    gap: 0;
     .modern-form {
       padding-top: 0;
       width: 100%;
@@ -309,5 +356,10 @@ body {
         font-size: 14px;
       }
     }
+  }
+
+  .banner--bottom {
+    background-size: cover;
+    justify-content: end;
   }
 }

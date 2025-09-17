@@ -5,6 +5,45 @@
   --dark-background: #777777;
 }
 
+/* Animations */
+.fade-right {
+  opacity: 0;
+  transform: translate(-64px, 0);
+  transition: opacity 750ms ease-out var(--fade-delay, 0ms),
+    transform 750ms ease-out var(--fade-delay, 0ms);
+}
+
+.fade-left {
+  opacity: 0;
+  transform: translate(64px, 0);
+  transition: opacity 750ms ease-out var(--fade-delay, 0ms),
+    transform 750ms ease-out var(--fade-delay, 0ms);
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translate(0, 64px);
+  transition: opacity 750ms ease-out var(--fade-delay, 0ms),
+    transform 750ms ease-out var(--fade-delay, 0ms), box-shadow 500ms;
+}
+
+.delay-100 {
+  --fade-delay: 100ms;
+}
+
+.delay-200 {
+  --fade-delay: 200ms;
+}
+
+.delay-300 {
+  --fade-delay: 300ms;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
 html,
 body {
   font-family: var(--main-font);
@@ -65,28 +104,31 @@ body {
     flex-direction: row;
     justify-content: center;
     gap: 32px;
-
-    .card {
-      min-width: 350px;
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: var(--box-shadow);
-      img {
-        width: 100%;
-      }
-      .card-content {
-        padding: 24px;
-        align-items: start;
-      }
+  }
+  .card {
+    min-width: 350px;
+    width: 33%;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      object-position: center 80%;
+    }
+    .card-content {
+      padding: 24px;
+      align-items: start;
     }
   }
 }
 
 .banner {
-  background-image: url(media/pexels-steshkacroes-3018993.jpg);
-  background-position: left center;
+  background-image: url(media/john-smile.JPG);
+  background-position: 10% 20%;
   background-size: 150%;
-  height: 500px;
+  height: 600px;
   color: white;
   align-items: start;
 
@@ -104,17 +146,28 @@ body {
 .context-section {
   flex-direction: row;
   gap: 64px;
-
-  img {
-    max-width: 700px;
-    height: 400px;
-    border-radius: 32px;
-    object-fit: cover;
+  .img-container {
+    flex-direction: row;
+    img {
+      width: 350px;
+      height: 500px;
+      border-radius: 32px;
+      object-fit: cover;
+      box-shadow: var(--box-shadow);
+    }
+    img:nth-of-type(2) {
+      margin-left: -64px;
+      margin-top: 32px;
+    }
   }
 }
 
 .card-section {
   gap: 64px;
+  .text-box {
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .end-cta-section {
@@ -129,6 +182,7 @@ body {
       border-radius: 0;
       width: 400px;
       height: 500px;
+      object-fit: cover;
     }
     .text-box {
       padding: 32px;
@@ -138,14 +192,15 @@ body {
 
 .form-section {
   padding-top: 0;
+  flex-direction: row;
+  justify-content: center;
+  gap: 64px;
   .modern-form {
     background: #fff;
-    padding: 32px 40px;
+    padding: 32px;
     border-radius: 24px;
     box-shadow: var(--box-shadow);
     max-width: 480px;
-    min-width: 400px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -195,6 +250,11 @@ body {
   }
 }
 
+.banner--bottom {
+  background-image: url(media/john-beer.jpg);
+  height: 100vh;
+}
+
 @media (max-width: 900px) {
   html,
   body {
@@ -222,7 +282,9 @@ body {
       .card {
         min-width: 0;
         width: 100%;
-
+        img {
+          height: 250px;
+        }
         p {
           font-size: 16px;
         }
@@ -232,7 +294,7 @@ body {
 
   .banner {
     background-size: 500%;
-    background-position: center 30%;
+    background-position: 60% 5%;
     height: 500px;
     justify-content: start;
 
@@ -248,10 +310,17 @@ body {
     flex-direction: column;
     gap: 0;
 
-    img {
+    .img-container {
       width: 100%;
-      height: 250px;
-      border-radius: 0;
+      img {
+        width: 100%;
+        height: 250px;
+        border-radius: 0;
+      }
+      img:nth-of-type(2) {
+        margin-left: 0;
+        margin-top: 0;
+      }
     }
   }
 
@@ -267,14 +336,16 @@ body {
       box-shadow: none;
       img {
         width: 100%;
-        height: 350px;
-        object-position: center 30%;
+        height: 300px;
+        object-position: center center;
       }
     }
   }
 
   .form-section {
-    padding: 0;
+    padding: 0 0 5% 0;
+    flex-direction: column;
+    gap: 0;
     .modern-form {
       padding-top: 0;
       width: 100%;
@@ -285,5 +356,10 @@ body {
         font-size: 14px;
       }
     }
+  }
+
+  .banner--bottom {
+    background-size: cover;
+    justify-content: end;
   }
 }

@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
   if (form && lastSection) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      // Clear all input and textarea values inside the form
+      form.querySelectorAll("input, textarea").forEach((el) => {
+        if (el.type !== "hidden") el.value = "";
+      });
       lastSection.scrollIntoView({ behavior: "smooth" });
     });
   }

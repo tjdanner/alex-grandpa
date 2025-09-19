@@ -4,12 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (form && lastSection) {
     form.addEventListener("submit", function () {
-      // Clear all input and textarea values inside the form (after submission)
-      form.querySelectorAll("input, textarea").forEach((el) => {
-        if (el.type !== "hidden") el.value = "";
-      });
+      // Just scroll to the last section after submission
       lastSection.scrollIntoView({ behavior: "smooth" });
-      // Do NOT prevent default, so Netlify can process the form
+      // No need to clear fields; browser will handle this on reload
     });
   }
 
